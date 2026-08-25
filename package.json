@@ -1,0 +1,20 @@
+{
+  "name": "procurio-b2b-platform",
+  "version": "1.0.0",
+  "private": true,
+  "description": "PROCURIO / توريد — Smart B2B Procurement & Sourcing Platform (MERN)",
+  "workspaces": ["backend", "frontend"],
+  "scripts": {
+    "install:all": "npm install --workspaces --include-workspace-root",
+    "dev": "concurrently -n API,WEB -c cyan,magenta \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "npm run dev --workspace backend",
+    "dev:web": "npm run dev --workspace frontend",
+    "seed": "npm run seed --workspace backend",
+    "build": "npm run build --workspace frontend",
+    "start": "npm run start --workspace backend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "engines": { "node": ">=18.18" }
+}

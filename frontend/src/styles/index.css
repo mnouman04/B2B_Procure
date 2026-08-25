@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-canvas font-sans text-ink antialiased;
+  }
+
+  /* Arabic switches the whole app to an Arabic-first face and RTL flow. */
+  html[dir='rtl'] body {
+    @apply font-arabic;
+  }
+
+  *:focus-visible {
+    @apply outline-none ring-2 ring-gold-400 ring-offset-2 ring-offset-white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-navy-200;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-navy-300;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-card border border-line bg-white shadow-card;
+  }
+
+  .card-pad {
+    @apply p-5;
+  }
+
+  .field-label {
+    @apply mb-1.5 block text-[13px] font-medium text-slate-600;
+  }
+
+  .field {
+    @apply w-full rounded-lg border border-line bg-white px-3.5 py-2.5 text-sm text-ink
+           placeholder:text-slate-400 transition
+           focus:border-navy-400 focus:outline-none focus:ring-2 focus:ring-navy-100;
+  }
+
+  .field-error {
+    @apply border-danger focus:border-danger focus:ring-danger/15;
+  }
+
+  .table-head {
+    @apply bg-slate-50/80 text-2xs font-semibold uppercase tracking-wider text-slate-500;
+  }
+
+  /* Fades long horizontal tables at the trailing edge. */
+  .scroll-x {
+    @apply overflow-x-auto;
+    scrollbar-width: thin;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Mirrors a decorative icon when the document flips to RTL. */
+  .rtl-flip:where(html[dir='rtl'] *) {
+    transform: scaleX(-1);
+  }
+}
